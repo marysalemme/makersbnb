@@ -9,8 +9,12 @@ So that I can list a new space,
 I want a sign-up feature.
 
 As a user,
-So that I can secure my return to the site,
-I want to login and logout.
+So that I can access my account,
+I want to login.
+
+As a user,
+So that I can leave the site securely,
+I want to logout.
 
 As a user,
 So that I can list many spaces,
@@ -38,10 +42,10 @@ I want to be able to approve bookings.
 
 As a space-hosting user,
 So that my property doesn’t get overbooked,
-I want to be able to display my existing bookings.
+I want to be able to display unavailable dates.
 
 As a space-hosting,
-So that I can avoid bad guests,
-I want to able to vet and confirm bookings.
+So that the space can still be booked while any request are unconfirmed,
+I want the space to appear as free between request and confirmation.
 
 ```
