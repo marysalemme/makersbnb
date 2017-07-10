@@ -5,6 +5,14 @@
     <title>Makers BNB</title>
   </head>
   <body>
+    <% if flash[:errors] && !flash[:errors].empty? %>
+      <% flash[:errors].each do |error| %>
+        <div class="alert">
+          <%= error %>
+        </div>
+      <% end %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
