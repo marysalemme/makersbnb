@@ -4,8 +4,6 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/partial'
 
-# require models at this point.
-
 require_relative 'data_mapper_setup'
 
 class MakersBnb < Sinatra::Base
@@ -15,13 +13,4 @@ class MakersBnb < Sinatra::Base
   get '/' do
     erb :index
   end
-
-  get '/user' do
-    erb :new
-  end
-
-  post '/user' do
-    @user = User.create(name: params[:name], username: params[:username], email: params[:email])
-  end
-
 end
