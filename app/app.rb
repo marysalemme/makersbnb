@@ -9,8 +9,17 @@ require_relative 'data_mapper_setup'
 class MakersBnb < Sinatra::Base
   register Sinatra::Flash
   register Sinatra::Partial
-
+  
   get '/' do
     erb :index
   end
+  
+  get '/users/new' do
+    erb :'/users/new'
+  end
+  
+  post '/users' do
+    redirect ('/')
+  end
+  
 end
