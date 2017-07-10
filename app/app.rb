@@ -16,5 +16,12 @@ class MakersBnb < Sinatra::Base
     erb :index
   end
 
+  get '/user' do
+    erb :new
+  end
+
+  post '/user' do
+    @user = User.create(name: params[:name], username: params[:username], email: params[:email])
+  end
 
 end

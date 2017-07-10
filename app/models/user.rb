@@ -1,4 +1,3 @@
-
 require "bcrypt"
 
 class User
@@ -10,8 +9,8 @@ class User
   has n, :space
 
   property :id, Serial
+  property :name, String
   property :username, String, :unique => true
   property :email, String, :unique => true
-
 
 end
