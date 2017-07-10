@@ -1,17 +1,20 @@
-<<<<<<< HEAD
-require "bcrypt"
+require 'bcrypt'
 
-=======
->>>>>>> parent of 44a6098... Adding properties for users and spaces - also defining their relationship
 class User
   include DataMapper::Resource
 
-  property :id, Serial
-<<<<<<< HEAD
-  property :name, String
-  property :username, String, :unique => true
-  property :email, String, :unique => true
+  attr_accessor :password_confirmation
+  attr_reader :password
 
-=======
->>>>>>> parent of 44a6098... Adding properties for users and spaces - also defining their relationship
+  property :id, Serial
+  property :username, String, required: true, unique: true
+  property :email, String, required: true, unique: true
+  property :password_digest, Text
+
+  validates_confirmation_of :password
+
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
 end
