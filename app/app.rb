@@ -4,18 +4,19 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/partial'
 
-# require models at this point.
-
 require_relative 'data_mapper_setup'
 
 class MakersBnb < Sinatra::Base
   register Sinatra::Flash
   register Sinatra::Partial
-  enable :sessions
+
+  set :session_secret, 'very SuPER DUPeR secret ha ha no hack please'
+
 
   get '/' do
     erb :index
   end
+
 
   get '/space' do
     erb :'space/new'
@@ -24,6 +25,21 @@ class MakersBnb < Sinatra::Base
   post '/space' do
     @space = Space.new(description: params[:description], price: params[:price], location: params[:location], user_id: 1)
     erb :'space/index'
+
+  get '/users/new' do
+    erb :'/users/new'
   end
 
+  post '/users' do
+    @user = User.new(username: params[:username], email: params[:email],
+                     password: params[:password],
+                     password_confirmation: params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect ('/')
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      erb :'/users/new'
+    end
+  end
 end
