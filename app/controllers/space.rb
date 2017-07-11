@@ -4,7 +4,10 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/space' do
-    @space = Space.new(description: params[:description], price: params[:price], location: params[:location])
+    @space = Space.new(description: params[:description],
+                       price: params[:price],
+                       location: params[:location],
+                       user_id: session[:user_id])
     if @space.save
       redirect 'space/index'
     else

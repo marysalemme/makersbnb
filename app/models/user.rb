@@ -11,6 +11,8 @@ class User
   property :email, String, required: true, unique: true
   property :password_digest, Text
 
+  has n, :spaces
+
   validates_confirmation_of :password
 
   def password=(password)
@@ -20,6 +22,6 @@ class User
 
   def self.authenticate(username, password)
     user = first(username: username)
-    user if user && BCrypt::Password.new(user.password_digest) == password 
+    user if user && BCrypt::Password.new(user.password_digest) == password
   end
 end
