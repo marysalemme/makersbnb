@@ -11,7 +11,7 @@ require 'simplecov-console'
 require 'data_mapper'
 require 'dm-postgres-adapter'
 require 'dm-rspec'
-require_relative 'backend/helpers'
+require_relative 'backend/test_helpers'
 
 include Capybara::DSL
 
@@ -25,6 +25,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 
   RSpec.configure do |config|
     config.include(DataMapper::Matchers)
+    config.include(TestHelper)
 
     config.expect_with :rspec do |expectations|
       expectations.include_chain_clauses_in_custom_matcher_descriptions = true
