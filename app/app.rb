@@ -11,7 +11,7 @@ require_relative 'data_mapper_setup'
 class MakersBnb < Sinatra::Base
   register Sinatra::Flash
   register Sinatra::Partial
-  enable :sessions
+
   set :session_secret, 'very SuPER DUPeR secret ha ha no hack please'
 
   get '/' do
