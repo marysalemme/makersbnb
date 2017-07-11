@@ -7,3 +7,10 @@ def sign_up(username: 'John Doe', email: 'johndoetest@gmail.com', password: 'pas
   fill_in(:password_confirmation, with: password_confirmation)
   click_button('Submit')
 end
+
+def sign_in(username: 'John Doe', password: 'password123')
+  visit('sessions/new')
+  fill_in(:username, with: username)
+  fill_in(:password, with: password)
+  click_button('Submit')
+end
