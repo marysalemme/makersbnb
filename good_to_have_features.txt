@@ -1,0 +1,8 @@
+* Ratings
+
+* Filter by:
+  - price
+  - rating
+  - date
+  - user
+  
