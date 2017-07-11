@@ -3,6 +3,7 @@ class MakersBnb < Sinatra::Base
   register Sinatra::Partial
   enable :sessions
   set :session_secret, 'very SuPER DUPeR secret ha ha no hack please'
+  use Rack::MethodOverride
 
   helpers do
     def new_user
