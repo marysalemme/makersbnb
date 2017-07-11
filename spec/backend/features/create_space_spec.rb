@@ -1,6 +1,8 @@
 
 feature "list of spaces" do
   scenario "user creates a space" do
+    sign_up
+    sign_in
     create_space
     expect(page).to have_content("tiny flat")
     expect(page).to have_content("50.0")
