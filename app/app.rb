@@ -3,6 +3,8 @@ ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/partial'
+require_relative 'models/space'
+require_relative '../spec/backend/helpers'
 
 require_relative 'data_mapper_setup'
 
@@ -12,19 +14,23 @@ class MakersBnb < Sinatra::Base
 
   set :session_secret, 'very SuPER DUPeR secret ha ha no hack please'
 
-
   get '/' do
     erb :index
   end
-
 
   get '/space' do
     erb :'space/new'
   end
 
   post '/space' do
-    @space = Space.new(description: params[:description], price: params[:price], location: params[:location], user_id: 1)
-    erb :'space/index'
+    @space = Space.new(description: params[:description], price: params[:price], location: params[:location])
+    if @space.save
+      erb :'space/index'
+    else
+      flash.now[:errors] = @space.errors.full_messages
+      erb :'space/new'
+    end
+  end
 
   get '/users/new' do
     erb :'/users/new'

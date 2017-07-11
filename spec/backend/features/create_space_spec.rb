@@ -11,3 +11,13 @@ feature "list of spaces" do
     expect(page).to have_content("Mile End")
   end
 end
+
+feature "correct errors are thrown" do
+  scenario "blank fields throw an error" do
+    visit '/space'
+    fill_in "description", with: "tiny flat"
+    fill_in "price", with: "50.0"
+    click_on("List space")
+    expect(page).to have_content("must not be blank")
+  end
+end
