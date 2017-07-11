@@ -24,6 +24,7 @@ class MakersBnb < Sinatra::Base
   post '/space' do
     @space = Space.new(description: params[:description], price: params[:price], location: params[:location], user_id: 1)
     erb :'space/index'
+  end
 
   get '/users/new' do
     erb :'/users/new'
