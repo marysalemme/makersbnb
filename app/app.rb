@@ -3,6 +3,8 @@ ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/partial'
+require_relative 'models/space'
+require_relative '../spec/backend/helpers'
 
 require_relative 'data_mapper_setup'
 
@@ -16,13 +18,22 @@ class MakersBnb < Sinatra::Base
     erb :index
   end
 
-
-  get '/space' do
+  get '/space/new' do
     erb :'space/new'
   end
 
   post '/space' do
-    @space = Space.new(description: params[:description], price: params[:price], location: params[:location], user_id: 1)
+    @space = Space.new(description: params[:description], price: params[:price], location: params[:location])
+    if @space.save
+      redirect 'space/index'
+    else
+      flash.now[:errors] = @space.errors.full_messages
+      erb :'space/new'
+    end
+  end
+
+  get '/space/index' do
+    @space = Space.last
     erb :'space/index'
   end
 

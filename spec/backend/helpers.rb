@@ -1,3 +1,4 @@
+
 def sign_up(username: 'John Doe', email: 'johndoetest@gmail.com', password: 'password123', password_confirmation: 'password123')
   visit('users/new')
   fill_in(:username, with: username)
