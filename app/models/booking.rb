@@ -6,8 +6,8 @@ class Booking
   include DataMapper::Resource
 
   property :id, Serial
-  property :start_date, Text, required: true
-  property :end_date, Float, required: true
+  property :start_date, Date, required: true
+  property :end_date, Date, required: true
 
   belongs_to :space
 
