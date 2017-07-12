@@ -10,5 +10,6 @@ class Space
   property :location, String, required: true
 
   belongs_to :user
+  has n, :bookings
 
 end
