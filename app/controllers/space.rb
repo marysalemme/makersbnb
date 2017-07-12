@@ -17,7 +17,7 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/space/index' do
-    @space = Space.last
+    @spaces = Space.all
     erb :'space/index'
   end
 end
