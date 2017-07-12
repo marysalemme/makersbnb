@@ -25,9 +25,9 @@ module TestHelper
     click_on("List space")
   end
 
-  def create_booking
-    visit '/bookings/new'
-    fill_in :space_id, with: '1'
+  def create_booking(id: 1)
+    visit '/space'
+    click_on("space#{id}")
     fill_in :start_date, with: "21/7/2017"
     fill_in :end_date, with: "22/7/2017"
     click_button("Book")
