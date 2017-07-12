@@ -7,7 +7,6 @@ feature "list of spaces" do
     expect(page).to have_content("tiny flat")
     expect(page).to have_content("50.0")
     expect(page).to have_content("Mile End")
-    fill_in(:price_min, with: "20")
   end
 end
 
