@@ -9,15 +9,15 @@ class MakersBnb < Sinatra::Base
                        location: params[:location],
                        user_id: session[:user_id])
     if @space.save
-      redirect 'space/index'
+      redirect '/space'
     else
       flash.now[:errors] = @space.errors.full_messages
       erb :'space/new'
     end
   end
 
-  get '/space/index' do
-    @space = Space.last
+  get '/space' do
+    @spaces = Space.all
     erb :'space/index'
   end
 end

@@ -1,7 +1,11 @@
 
-<h1> Makersbnb </h1>
+<h1> All Spaces </h1>
 
-<p> Description: <%= @space.description %> </p>
-<p> Price: <%= @space.price %> </p>
-<p> Location: <%= @space.location %> </p>
-<a href="mailto:johndoetest@gmail.com">Book Now</a>
+<% @spaces.reverse_each do |space| %>
+  <article class="listing">
+    <h3><%= space.description %></h3>
+    <h4> Location: <%= space.location %> </h4>
+    <p> Price: £<%= space.price %> </p>
+    <a href="mailto:johndoetest@gmail.com">Book Now</a>
+  </article>
+<% end %>
