@@ -1,12 +1,27 @@
+
 feature 'Booking a Space' do
   scenario 'User can book a space' do
     sign_up
     create_space
-    visit '/bookings/new'
-    fill_in :space_id, with: '1'
-    fill_in :start_date, with: "21/7/2017"
-    fill_in :end_date, with: "22/7/2017"
-    click_button("Book")
-    expect(Booking.count).to eq 1
+    expect{create_booking}.to change(Booking, :count).by(1)
   end
+  scenario "User gets a confirmation page" do
+    sign_up
+    create_space
+    create_booking
+    expect(page).to have_content("21/7/2017")
+    expect(page).to have_content("22/7/2017")
+  end
+  scenario "Booking form is specific to space" do
+    sign_up
+    create_space(description: "big flat")
+    create_space(description: "medium flat")
+    create_space(description: "small flat")
+    create_space
+    click_on("#space2")
+    expect(page).to have_content("medium flat")
+  end
+
+  # three/four space. Pick middle - then make sure middle is rendered on book form.
+
 end
