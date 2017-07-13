@@ -17,4 +17,9 @@ class MakersBnb < Sinatra::Base
     @spaces = Space.all
     erb :'space/index'
   end
+
+  get '/space/:id' do
+    @space = Space.get(params[:id])
+    erb :'space/show'
+  end
 end
