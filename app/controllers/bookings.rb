@@ -17,9 +17,8 @@ class MakersBnb < Sinatra::Base
   end
 
   post "/bookings/requests/:id" do
-    booking = Space.get(1).bookings[0]
-    p booking
-    booking.update(approval: true)
+     @booking = Booking.get(params[:id])
+     @booking.update(approval: true)
   end
 
   post '/bookings' do
