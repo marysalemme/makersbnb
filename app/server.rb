@@ -15,5 +15,18 @@ class MakersBnb < Sinatra::Base
     def current_user
       @current_user ||= User.get(session[:user_id])
     end
+
+    def booking_error(error_message)
+      flash.next[:errors] = [error_message]
+      redirect "/bookings/new/#{session[:space_id]}"
+    end
+
+    def empty_dates?(start_date = params[:start_date], end_date = params[:end_date])
+      start_date.empty? || end_date.empty?
+    end
+
+    def invalid_dates? (start_date = params[:start_date], end_date = params[:end_date])
+      Date.parse(start_date) >= Date.parse(end_date)
+    end
   end
 end

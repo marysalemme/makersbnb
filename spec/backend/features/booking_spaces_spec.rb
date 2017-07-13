@@ -33,4 +33,14 @@ feature 'Booking a Space' do
     create_booking(id: 8, start_date: nil)
     expect(page).to have_content("Start and end dates needed")
   end
+
+  scenario "Dates must be valid" do
+    create_booking(id: 9, start_date: "22/7/2017", end_date: "21/7/2017")
+    expect(page).to have_content "Dates must be valid"
+  end
+
+  scenario "Booking must be for at least one night" do
+    create_booking(id: 10, start_date: "22/7/2017", end_date: "22/7/2017")
+    expect(page).to have_content "Dates must be valid"
+  end
 end

@@ -11,17 +11,11 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/bookings' do
-    if current_user == nil
-      flash.next[:errors] = ["You need to be signed in to book a space"]
-      redirect "/bookings/new/#{session[:space_id]}"
-    end
+    booking_error("You need to be signed in to book a space") unless current_user
+    booking_error("Start and end dates needed") if empty_dates?
+    booking_error("Dates must be valid") if invalid_dates?
+
     space = Space.get(session[:space_id])
-    p params[:start_date]
-    p params[:end_date]
-    if params[:start_date].empty? || params[:end_date].empty?
-      flash.next[:errors] = ["Start and end dates needed"]
-      redirect "/bookings/new/#{session[:space_id]}"
-    end
     booking = space.bookings.new(start_date: Date.parse(params[:start_date]),
                                  end_date: Date.parse(params[:end_date]))
     if booking.save
