@@ -1,0 +1,10 @@
+
+
+<% @spaces.each do |space| %>
+<%= space.description %><br>
+<% space.bookings.each do |booking| %>
+<%= booking.start_date.strftime("%d/%m/%Y") %> -
+<%= booking.end_date.strftime("%d/%m/%Y") %>
+<% end %>
+<button> Confirm Booking </button>
+<% end %>

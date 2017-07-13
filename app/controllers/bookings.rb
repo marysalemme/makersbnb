@@ -10,6 +10,12 @@ class MakersBnb < Sinatra::Base
     erb :'/bookings/show'
   end
 
+  get "/bookings/requests" do
+    @user = current_user
+    @spaces = @user.spaces
+    erb :'bookings/requests'
+  end
+
   post '/bookings' do
     check_booking_errors
     space = Space.get(session[:space_id])
