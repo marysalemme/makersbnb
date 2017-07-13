@@ -3,10 +3,7 @@ feature 'Search' do
     sign_up
     create_space
     create_space(description: 'big flat', price: '70.0', location: 'Aldgate East')
-    fill_in(:price_min, with: '20')
-    fill_in(:price_max, with: '60')
-    fill_in(:location, with: 'Mile End')
-    click_on('Search')
+    search
     expect(page).to have_current_path('/search/results')
     expect(page).to have_content('tiny flat')
   end
@@ -15,10 +12,7 @@ feature 'Search' do
     sign_up
     create_space
     create_space(description: 'big flat', price: '70.0', location: 'Aldgate East')
-    fill_in(:price_min, with: '60')
-    fill_in(:price_max, with: '75')
-    fill_in(:location, with: 'Aldgate East')
-    click_on('Search')
+    search(price_min: '60', price_max: '75', location: 'Aldgate East')
     expect(page).to have_current_path('/search/results')
     expect(page).to have_content('big flat')
     expect(page).to_not have_content('tiny flat')
