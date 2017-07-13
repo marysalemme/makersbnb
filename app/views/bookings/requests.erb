@@ -5,6 +5,7 @@
 <% space.bookings.each do |booking| %>
 <%= booking.start_date.strftime("%d/%m/%Y") %> -
 <%= booking.end_date.strftime("%d/%m/%Y") %>
+
+<a href="../bookings/requests/<%= booking.id %>"><button id="booking<%= booking.id %>">Confirm Booking</button></a>
 <% end %>
-<button> Confirm Booking </button>
 <% end %>
