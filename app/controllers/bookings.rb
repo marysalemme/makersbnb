@@ -11,10 +11,7 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/bookings' do
-    booking_error("You need to be signed in to book a space") unless current_user
-    booking_error("Start and end dates needed") if empty_dates?
-    booking_error("Dates must be valid") if invalid_dates?
-
+    check_booking_errors
     space = Space.get(session[:space_id])
     booking = space.bookings.new(start_date: Date.parse(params[:start_date]),
                                  end_date: Date.parse(params[:end_date]))
