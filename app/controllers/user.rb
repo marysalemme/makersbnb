@@ -2,13 +2,13 @@ class MakersBnb < Sinatra::Base
   get '/' do
     erb :index
   end
-  
+
   get '/users/new' do
     erb :'/users/new'
   end
-  
+
   post '/users' do
-    new_user
+    @user = new_user
     if @user.save
       session[:user_id] = @user.id
       redirect '/'
