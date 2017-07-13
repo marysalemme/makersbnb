@@ -17,6 +17,10 @@ module TestHelper
     click_button('Submit')
   end
 
+  def sign_out
+    click_button('Sign Out')
+  end
+
   def create_space(description: "tiny flat", price: "50.0", location: "Mile End")
     visit '/space/new'
     fill_in "description", with: description
@@ -25,11 +29,11 @@ module TestHelper
     click_on("List space")
   end
 
-  def create_booking(id: 1)
+  def create_booking(id: 1, start_date: "21/7/2017", end_date: "22/7/2017")
     visit '/space'
     click_on("space#{id}")
-    fill_in :start_date, with: "21/7/2017"
-    fill_in :end_date, with: "22/7/2017"
+    fill_in :start_date, with: start_date
+    fill_in :end_date, with: end_date
     click_button("Book")
   end
 

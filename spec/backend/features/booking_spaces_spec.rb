@@ -22,4 +22,15 @@ feature 'Booking a Space' do
     click_on("space4")
     expect(page).to have_content("medium flat")
   end
+
+  scenario "Booking is only possible if user is logged in" do
+    sign_out
+    expect{create_booking(id: 7)}.to_not change(Booking, :count)
+    expect(page).to have_content("You need to be signed in to book a space")
+  end
+
+  scenario "User can only book if start and end dates entered" do
+    create_booking(id: 8, start_date: nil)
+    expect(page).to have_content("Start and end dates needed")
+  end
 end
