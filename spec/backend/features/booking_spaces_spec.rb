@@ -11,8 +11,8 @@ feature 'Booking a Space' do
 
   scenario "User gets a confirmation page" do
     create_booking(id: 2) #DatabaseCleaner isn't cleaning DB before each spec, only after
-    expect(page).to have_content("21/7/2017")
-    expect(page).to have_content("22/7/2017")
+    expect(page).to have_content("21/07/2017")
+    expect(page).to have_content("22/07/2017")
   end
 
   scenario "Booking form is specific to space" do
