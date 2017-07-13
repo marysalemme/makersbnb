@@ -10,4 +10,6 @@ require_relative 'server'
 require_relative 'controllers/user'
 require_relative 'controllers/space'
 require_relative 'controllers/sessions'
+
 require_relative 'controllers/search'
+require_relative 'controllers/bookings'

@@ -1,0 +1,15 @@
+<h1>Book a Space</h1>
+
+<%= @space.description %>
+
+<form class="" action="/bookings" method="post">
+  <label for="start_date">Check In:
+    <input type="text" name="start_date" placeholder="DD/MM/YYYY">
+  </label>
+
+  <label for="end_date">Check Out:
+    <input type="text" name="end_date" placeholder="DD/MM/YYYY">
+  </label>
+
+  <input type="submit" name="submit" value="Book">
+</form>

@@ -9,10 +9,10 @@
 </form>
 
 <% @spaces.reverse_each do |space| %>
-<article class="listing">
-  <h3><%= space.description %></h3>
-  <h4> Location: <%= space.location %> </h4>
-  <p> Price: £<%= space.price %> </p>
-  <a href="mailto:johndoetest@gmail.com">Book Now</a>
-</article>
+  <article class="listing">
+    <h3><%= space.description %></h3>
+    <h4> Location: <%= space.location %> </h4>
+    <p> Price: £<%= space.price %> </p>
+    <a id="space<%= space.id %>" href="../bookings/new/<%= space.id %>">Book Now</a>
+  </article>
 <% end %>
