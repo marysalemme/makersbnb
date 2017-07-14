@@ -8,8 +8,8 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/search/results' do
-    @filtered_spaces = Space.all(:price.gt => session[:price_min],
-                                 :price.lt => session[:price_max],
+    @filtered_spaces = Space.all(:price.gte => session[:price_min],
+                                 :price.lte => session[:price_max],
                                  :location => session[:location])
     erb :'/search/results'
   end

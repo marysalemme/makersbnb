@@ -17,4 +17,12 @@ feature 'Search' do
     expect(page).to have_content('big flat')
     expect(page).to_not have_content('tiny flat')
   end
+
+  scenario "spaces at min or max price are displayed" do
+    sign_up
+    create_space
+    create_space(description: 'big flat', price: '70.0', location: 'Aldgate East')
+    search(price_min: '70', price_max: '75', location: 'Aldgate East')
+    expect(page).to have_content('big flat')
+  end
 end
