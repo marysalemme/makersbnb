@@ -14,16 +14,23 @@ class Space
   belongs_to :user
   has n, :bookings
 
-  def available?
-    self.bookings.each do |booking|
-      return false if booking.start_date...booking.end_date === Date.today
+  def occupied?(*dates)
+    dates = [Date.today] if dates.empty?
+    dates.flatten.each do |date|
+      return true if check_occupied(date)
     end
-    true
+    false
   end
 
   def available_on
-    date = self.bookings.last.end_date
-    date.strftime("%d/%m/%Y")
+    bookings.last.end_date.strftime("%d/%m/%Y")
   end
 
+  private
+  def check_occupied(date)
+    bookings.each do |booking|
+      return true if (booking.start_date..booking.end_date).include? date
+    end
+    false
+  end
 end
