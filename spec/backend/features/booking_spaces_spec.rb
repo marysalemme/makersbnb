@@ -46,7 +46,7 @@ feature 'Booking a Space' do
 
   scenario "Can't double book a space" do
     create_booking(id: 11)
-    create_booking(id: 11)
+    create_booking(id: 11, end_date: "25/07/2017")
     expect(page).to have_content "Space is occupied"
   end
 end
