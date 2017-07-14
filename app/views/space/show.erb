@@ -1,10 +1,39 @@
-<h1><%= @space.description %></h1>
+<style>
 
-<p>Location: <%= @space.location %></p>
-<p>Price: £<%= @space.price %></p>
+   h2 {
+   text-align: center
+   }
 
-<% if @space.occupied? %>
-<p>Next available: <%= @space.available_on %></p>
-<% else %>
-<a href="../bookings/new/<%= @space.id %>">Book Now</a>
-<% end %>
+   h1 {
+   text-align: center
+   }
+
+   a {
+   text-align: center
+   }
+
+   .prop_details {
+   margin: auto;
+   width: 50%;
+   }
+
+</style>
+<div class="row">
+   <h1> </h1>
+</div>
+<div class="row">
+   <div class="col-md-12 text-center">
+      <div class="prop_details">
+         <h1> <%= @space.description %> </h1>
+         <h2> Location: <%= @space.location %> </h2>
+         <h2> Price: £<%= @space.price %>  </h2>
+          <% if @space.occupied? %>
+            <h1>Next available: <%= @space.available_on %></h1>
+          <% else %>
+            <h1> </h1>
+            <a class="btn btn-info" href="../bookings/new/<%= @space.id %>">Book Now</a>
+         <% end %>
+       </div>
+   </div>
+
+</div>
