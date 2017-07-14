@@ -9,16 +9,20 @@
   </div>
   <div class="col-md-8 text-center">
     <% @spaces.each do |space| %>
+      <div class="booking">
       <%= space.description %><br>
       <% space.bookings.each do |booking| %>
-        <%= booking.start_date.strftime("%d/%m/%Y") %> -
-        <%= booking.end_date.strftime("%d/%m/%Y") %>
+        <div class="dates">
+          <%= booking.start_date.strftime("%d/%m/%Y") %> -
+          <%= booking.end_date.strftime("%d/%m/%Y") %>
+        </div>
         <% unless booking.approval %>
-          <form action="/bookings/requests/<%= booking.id %>" method="post">
+          <form class="confirm_booking" action="/bookings/requests/<%= booking.id %>" method="post">
             <input id="<%= booking.id %>" type="submit" value="Confirm Booking"/>
           </form>
         <% end %>
       <% end %>
+      </div>
     <% end %>
   </div>
   <div class="col-md-2">
