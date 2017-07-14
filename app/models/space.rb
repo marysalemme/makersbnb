@@ -12,4 +12,16 @@ class Space
   belongs_to :user
   has n, :bookings
 
+  def available?
+    self.bookings.each do |booking|
+      return false if booking.start_date...booking.end_date === Date.today
+    end
+    true
+  end
+
+  def available_on
+    date = self.bookings.last.end_date
+    date.strftime("%d/%m/%Y")
+  end
+
 end

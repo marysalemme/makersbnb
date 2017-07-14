@@ -2,12 +2,9 @@ class MakersBnb < Sinatra::Base
   get '/space/new' do
     erb :'space/new'
   end
-  
+
   post '/space' do
-    @space = Space.new(description: params[:description],
-    price: params[:price],
-    location: params[:location],
-    user_id: session[:user_id])
+    @space = new_space
     if @space.save
       redirect '/space'
     else
@@ -15,9 +12,14 @@ class MakersBnb < Sinatra::Base
       erb :'space/new'
     end
   end
-  
+
   get '/space' do
     @spaces = Space.all
     erb :'space/index'
+  end
+
+  get '/space/:id' do
+    @space = Space.get(params[:id])
+    erb :'space/show'
   end
 end

@@ -14,5 +14,6 @@
     <h4> Location: <%= space.location %> </h4>
     <p> Price: £<%= space.price %> </p>
     <a id="space<%= space.id %>" href="../bookings/new/<%= space.id %>">Book Now</a>
+    <a href="/space/<%= space.id %>">View Details</a>
   </article>
 <% end %>

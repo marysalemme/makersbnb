@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Makers BNB</title>
-  </head>
-  <body>
-    <% if current_user %>
-      <h2>Signed in as <%= current_user.username %></h2>
-      <form method="post" action="/sessions">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Sign Out">
-      </form>
-    <% end %>
-    <% if flash[:errors] && !flash[:errors].empty? %>
-      <% flash[:errors].each do |error| %>
-        <div class="alert">
-          <%= error %>
-        </div>
-      <% end %>
-    <% end %>
+<head>
+  <meta charset="utf-8">
+  <title>Makers BNB</title>
+  <link rel="stylesheet" href="/css/navbar.css">
+</head>
 
-    <%= yield %>
-  </body>
+<body>
+  
+<%= partial :"partials/navbar" %>
+
+<%= partial :"partials/flash" %>
+
+<%= yield %>
+
+</body>
 </html>
