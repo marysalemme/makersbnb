@@ -1,8 +1,40 @@
-<% @filtered_spaces.each do |space| %>
-<article class="listing">
-  <h3><%= space.description %></h3>
-  <h4> Location: <%= space.location %> </h4>
-  <p> Price: £<%= space.price %> </p>
-  <a href="mailto:johndoetest@gmail.com">Book Now</a>
-</article>
-<% end %>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1>Search Results</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+  </div>
+
+  <div class="col-md-8">
+    <% @filtered_spaces.each do |space| %>
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3><%= space.description %></h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="col-md-8">
+            <h3><%= space.location %> </h3>
+          </div>
+            <div class="col-md-4">
+              <h3>£<%= space.price %><small>/night</small></h3>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+          <a id="space<%= space.id %>" class="btn btn-info" href="../bookings/new/<%= space.id %>">Book Now</a>
+          <a class="btn btn-default" href="/space/<%= space.id %>">View Details</a>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-2">
+  </div>
+</div>

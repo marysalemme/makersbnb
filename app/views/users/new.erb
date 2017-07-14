@@ -1,7 +1,43 @@
-<form action="/users" method="post">
-  <input type="text" name="username" placeholder="Username" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <input type="password" name="password" placeholder="Password" required>
-  <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
-  <input type="submit" name="submit" value="Submit">
-</form>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1>Sign up</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form action="/users" method="post">
+      
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div  class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+          <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+          <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+          <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Confirm Password" required>
+        </div>
+      </div>
+      
+      <input type="submit" name="submit" style="margin:10px 0 0 0" class="btn btn-primary btn-block" value="Submit">
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>

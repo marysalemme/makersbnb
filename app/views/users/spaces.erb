@@ -1,11 +1,28 @@
-<h1>Your Spaces</h1>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1>Your Spaces</h1>
+  </div>
+</div>
 
-<% @users_spaces.each do |space| %>
-<article class="listing">
-  <h3><%= space.description %></h3>
-  <h4> Location: <%= space.location %> </h4>
-  <p> Price: £<%= space.price %> </p>
-  <a id="space<%= space.id %>" href="#">View Space Listing</a>
-  <%# TODO: Hook link above into individual space page %>
-</article>
-<% end %>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    
+    <% @users_spaces.each do |space| %>
+    <article class="listing">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">  <h3><%= space.description %></h3> </div>
+          <div class="panel-body">
+            <h4> Location: <%= space.location %> </h4>
+            <p> Price: £<%= space.price %> </p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <% end %>
+    
+    
+    <div class="col-md-3"></div>
+  </div>
+</div>
