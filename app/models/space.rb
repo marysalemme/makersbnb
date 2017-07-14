@@ -9,6 +9,8 @@ class Space
   property :price, Float, required: true
   property :location, String, required: true
 
+  validates_format_of :price, :with => /^(?!(?:0|0\.0|0\.00)$)[+]?\d+(\.\d|\.\d[0-9])?$/
+
   belongs_to :user
   has n, :bookings
 
