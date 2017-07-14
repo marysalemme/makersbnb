@@ -3,8 +3,8 @@
 <p>Location: <%= @space.location %></p>
 <p>Price: £<%= @space.price %></p>
 
-<% if @space.available? %>
-  <a href="../bookings/new/<%= @space.id %>">Book Now</a>
+<% unless @space.occupied?(Date.today) %>
+<a href="../bookings/new/<%= @space.id %>">Book Now</a>
 <% else %>
-  <p>Next available: <%= @space.available_on %></p>
+<p>Next available: <%= @space.available_on %></p>
 <% end %>
