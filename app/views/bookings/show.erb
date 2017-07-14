@@ -1,6 +1,19 @@
+<div class="container">
+  <div class="col-md-12 text-center">
+    <h1>Thanks for booking!</h1>
+  </div>
+</div>
 
-<h1>Thanks for booking!</h1>
-<h2>Your booking details:</h2>
-<%= @booking.space.description %><br>
-<%= @booking.start_date.strftime("%d/%m/%Y") %> -
-<%= @booking.end_date.strftime("%d/%m/%Y") %>
+<div class="container">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8 text-center">
+    <div class="booking">
+      <h2>Your booking details:</h2>
+      <%= @booking.space.description %><br>
+      <%= @booking.start_date.strftime("%d/%m/%Y") %> -
+      <%= @booking.end_date.strftime("%d/%m/%Y") %>
+    </div>
+  </div>
+  <div class="col-md-2">
+  </div>
