@@ -15,4 +15,11 @@ feature "correct errors are thrown" do
     create_space(location: nil)
     expect(page).to have_content("must not be blank")
   end
+
+  scenario "user must enter a price as positive" do
+    sign_up
+    sign_in
+    create_space(price: -150)
+    expect(page).to have_content("Price has an invalid format")
+  end
 end
