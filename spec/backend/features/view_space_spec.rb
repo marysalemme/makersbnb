@@ -42,15 +42,18 @@ feature "Viewing Spaces" do
       scenario "Space is listed as available" do
         visit '/space'
         click_on "View Details"
-        expect(page).to have_link "Book Now"        
+        expect(page).to have_link "Book Now"
       end
     end
 
     feature "Unavailable Spaces" do
+      let(:today)    { Date.today }
+      let(:tomorrow) { Date.today + 1}
+
       before do
         click_on("Book Now")
-        fill_in :start_date, with: "21/7/2017"
-        fill_in :end_date, with: "22/7/2017"
+        fill_in :start_date, with: "#{today.strftime("%d/%m/%Y")}"
+        fill_in :end_date, with: "#{tomorrow.strftime("%d/%m/%Y")}"
         click_button("Book")
       end
 
@@ -58,7 +61,7 @@ feature "Viewing Spaces" do
         visit '/space'
         click_on "View Details"
         expect(page).not_to have_link "Book Now"
-        expect(page).to have_content "Next available: 22/07/2017"
+        expect(page).to have_content "Next available: #{tomorrow.strftime("%d/%m/%Y")}"
       end
     end
   end

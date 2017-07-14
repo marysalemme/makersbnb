@@ -7,8 +7,8 @@ describe Space do
   it { is_expected.to have_property :location }
   it { is_expected.to belong_to :user }
 
-  describe '#available?' do
-    it { is_expected.to respond_to :available? }
+  describe '#occupied?' do
+    it { is_expected.to respond_to :occupied? }
   end
 
   describe '#available_on' do
