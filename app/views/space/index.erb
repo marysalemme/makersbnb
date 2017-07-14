@@ -1,19 +1,45 @@
+<div class="row">
 
-<h1> All Spaces </h1>
+   <div class="col-md-12 text-center">
+      <h1> All Spaces </h1>
+   </div>
 
-<form action="/search" method="post">
-  <input type="number" step=".01" name="price_min" id="price_min" placeholder="Minimum price">
-  <input type="number" step=".01" name="price_max" id="price_max" placeholder="Maximum price">
-  <input type="text" name="location" id="location" placeholder="Location">
-  <input type="submit" value="Search">
-</form>
+</div>
+<div class="col-md-2"></div>
 
-<% @spaces.reverse_each do |space| %>
-  <article class="listing">
-    <h3><%= space.description %></h3>
-    <h4> Location: <%= space.location %> </h4>
-    <p> Price: £<%= space.price %> </p>
-    <a id="space<%= space.id %>" href="../bookings/new/<%= space.id %>">Book Now</a>
-    <a href="/space/<%= space.id %>">View Details</a>
-  </article>
-<% end %>
+<div class="col-md-8 text-center">
+
+   <form action="/search" method="post">
+      <div class="form-group">
+         <input class="form-control" type="number" step=".01" name="price_min" id="price_min" placeholder="Minimum price">
+      </div>
+      <div class="form-group">
+         <input class="form-control" type="number" step=".01" name="price_max" id="price_max" placeholder="Maximum price">
+      </div>
+      <div class="form-group">
+         <input class="form-control" type="text" name="location" id="location" placeholder="Location">
+      </div>
+      <input class="btn btn-default" type="submit" value="Search">
+   </form>
+
+   <h1> </h1>
+
+   <% @spaces.reverse_each do |space| %>
+   <article class="listing">
+      <div class="panel-default">
+         <div class="panel panel-heading">
+            <h3><%= space.description %></h3>
+         </div>
+         <div class="panel-body"
+         <h4> Location: <%= space.location %> </h4>
+         <p> Price: £<%= space.price %> </p>
+         <a class="btn btn-info" id="space<%= space.id %>" href="../bookings/new/<%= space.id %>">Book Now</a>
+         <a class="btn btn-default" href="/space/<%= space.id %>">View Details</a>
+      </div>
+   </article>
+   <% end %>
+    </div>
+
+</div>
+<div class="col-md-2">
+</div>
