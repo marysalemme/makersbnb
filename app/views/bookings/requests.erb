@@ -1,14 +1,26 @@
+<div class="container">
+  <div class="col-md-12 text-center">
+    <h1>Your booking requests</h1>
+  </div>
+</div>
 
-
-<% @spaces.each do |space| %>
-  <%= space.description %><br>
-  <% space.bookings.each do |booking| %>
-    <%= booking.start_date.strftime("%d/%m/%Y") %> -
-    <%= booking.end_date.strftime("%d/%m/%Y") %>
-    <% unless booking.approval %>
-      <form action="/bookings/requests/<%= booking.id %>" method="post">
-        <input id="<%= booking.id %>" type="submit" value="Confirm Booking"/>
-      </form>
+<div class="container">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8 text-center">
+    <% @spaces.each do |space| %>
+      <%= space.description %><br>
+      <% space.bookings.each do |booking| %>
+        <%= booking.start_date.strftime("%d/%m/%Y") %> -
+        <%= booking.end_date.strftime("%d/%m/%Y") %>
+        <% unless booking.approval %>
+          <form action="/bookings/requests/<%= booking.id %>" method="post">
+            <input id="<%= booking.id %>" type="submit" value="Confirm Booking"/>
+          </form>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>
