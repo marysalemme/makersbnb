@@ -1,13 +1,14 @@
 
 
 <% @spaces.each do |space| %>
-<%= space.description %><br>
-<% space.bookings.each do |booking| %>
-<%= booking.start_date.strftime("%d/%m/%Y") %> -
-<%= booking.end_date.strftime("%d/%m/%Y") %>
-
-<form action="/bookings/requests/<%= booking.id %>" method="post">
-  <input type="submit" value="Confirm Booking"/>
-</form>
-<% end %>
+  <%= space.description %><br>
+  <% space.bookings.each do |booking| %>
+    <%= booking.start_date.strftime("%d/%m/%Y") %> -
+    <%= booking.end_date.strftime("%d/%m/%Y") %>
+    <% if !booking.approval %>
+      <form action="/bookings/requests/<%= booking.id %>" method="post">
+        <input id="<%= booking.id %>" type="submit" value="Confirm Booking"/>
+      </form>
+    <% end %>
+  <% end %>
 <% end %>

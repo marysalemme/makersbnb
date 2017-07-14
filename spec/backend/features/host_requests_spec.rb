@@ -5,7 +5,6 @@ feature "host can see booking requests" do
   before do
     sign_up
     create_space
-    # create_booking(id: 13)
   end
 
   scenario "host views a page of booking requests" do
@@ -21,5 +20,12 @@ feature "host can see booking requests" do
     visit("/bookings/requests")
     click_button("Confirm Booking")
     expect(Space.get(13).bookings[0].approval).to be true
+  end
+
+  scenario "booking button removes itself on approval" do
+    create_booking(id: 14)
+    visit("/bookings/requests")
+    find('#5').click
+    expect(page).to_not have_css('#5')
   end
 end
