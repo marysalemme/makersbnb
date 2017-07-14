@@ -14,7 +14,9 @@ class Space
 
   def occupied?(*dates)
     dates = [Date.today] if dates.empty?
-    dates.each { |date| return true if check_occupied(date) }
+    dates.flatten.each do |date|
+      return true if check_occupied(date)
+    end
     false
   end
 
@@ -24,7 +26,9 @@ class Space
 
   private
   def check_occupied(date)
-    bookings.each { |booking| return true if booking.start_date...booking.end_date === date }
+    bookings.each do |booking|
+      return true if (booking.start_date..booking.end_date).include? date
+    end
     false
   end
 end

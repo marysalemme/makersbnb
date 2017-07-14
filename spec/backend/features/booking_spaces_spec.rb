@@ -43,4 +43,10 @@ feature 'Booking a Space' do
     create_booking(id: 10, start_date: "22/7/2017", end_date: "22/7/2017")
     expect(page).to have_content "Dates must be valid"
   end
+
+  scenario "Can't double book a space" do
+    create_booking(id: 11)
+    create_booking(id: 11)
+    expect(page).to have_content "Space is occupied"
+  end
 end
